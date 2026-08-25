@@ -1,0 +1,80 @@
+﻿@page
+@model NewCoreApp.Pages.InventoryModel
+
+<div class="shop-page">
+
+    <!-- Sidebar -->
+    <aside class="category-sidebar">
+        <h1>Categories</h1>
+
+        <details open>
+            <summary>Clothing</summary>
+
+            <details class="subcategory" open>
+                <summary>Male Clothing</summary>
+
+                <details class="subcategory">
+                    <summary>Tops</summary>
+
+                    <a href="#">T-Shirts</a>
+                    <a href="#">Long-Sleeves</a>
+                    <a href="#">Jackets</a>
+                    <a href="#">Hoodies</a>
+                </details>
+
+                <details class="subcategory">
+                    <summary>Bottoms</summary>
+                </details>
+            </details>
+        </details>
+
+        <details>
+            <summary>Female Clothing</summary>
+        </details>
+
+        <details>
+            <summary>Other</summary>
+        </details>
+
+    </aside>
+
+
+    <!-- Product Area -->
+    <main class="product-area">
+
+        <div class="product-grid">
+
+            @foreach (var item in Model.InventoryItems)
+            {
+                <div class="product-card">
+
+                    <div class="product-image">
+                        <!-- Image will eventually go here -->
+                    </div>
+
+                    <h2>@item.Name</h2>
+
+                    <p class="product-details">
+                        @item.Category
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <span class="product-price">
+                            $@item.Price
+                        </span>
+
+                        <a class="view-button" href="#">
+                            View
+                        </a>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </main>
+
+</div>
