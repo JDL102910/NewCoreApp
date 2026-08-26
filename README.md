@@ -1,0 +1,2 @@
+# NewCoreApp
+Thrift shop
