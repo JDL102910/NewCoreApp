@@ -7,7 +7,12 @@ html, body {
     padding: 0;
 }
 
+body {
+    padding-top: 60px;
+}
+
 .shop-page {
+    align-items: flex-start;
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -34,43 +39,84 @@ html {
 }
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    text-align: start;
 }
 
 .category-sidebar {
-    width: 350px;
-    flex-shrink: 0;
-    padding: 20px;
-    background-color: #f3ead7;
-    border-right: 1px solid #d4c8b5;
+
+    box-shadow: 0px 1px 10px black;
+    position: sticky;
+    z-index: 10;
+    top: 60px;
+    height: calc(100vh - 60px);
     overflow-y: auto;
+
+    width: 250px;
+    flex-shrink: 0;
 }
 
-    .category-sidebar details {
-        margin: 10px 0;
+.category-sidebar h1 {
+    text-align: center;
+    margin: 0px 10px;
+}
+
+.category-sidebar details {
+    margin: 2px 0;
+}
+
+/* The clickable category name */
+.category-sidebar summary {
+    cursor: pointer;
+    padding: 5px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+    /* Hover effect */
+    .category-sidebar summary:hover {
+        background-color: rgba(0, 0, 0, 0.07);
     }
 
-    .category-sidebar summary {
-        cursor: pointer;
-        font-size: 1.5rem;
-        font-weight: bold;
-        padding: 5px;
+/* Indent nested dropdowns */
+.category-sidebar details details {
+    margin-left: 18px;
+}
+
+    /* Make nested categories slightly smaller */
+    .category-sidebar details details summary {
+        font-size: 0.95rem;
+        font-weight: 500;
     }
 
-    .category-sidebar a {
-        display: block;
-        padding: 12px 15px;
-        margin-left: 25px;
-        color: #252525;
-        text-decoration: none;
-        font-size: 1.2rem;
+    /* Make deeply nested categories even more subtle */
+    .category-sidebar details details details summary {
+        font-size: 0.9rem;
+        font-weight: 400;
+    }
+
+/* Links at the bottom of a category tree */
+.category-sidebar a {
+    display: block;
+    padding: 7px 12px;
+    margin-left: 18px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-radius: 6px;
+}
+
+    .category-sidebar a:hover {
+        background-color: rgba(0, 0, 0, 0.07);
     }
 
 .product-area {
     flex-grow: 1;
     padding: 35px;
     background-color: #f7f0e3;
-    overflow-y: auto;
+    overflow-y: visible;
+    min-height: calc(100vh - 60px);
 }
 
 .product-grid {
@@ -132,7 +178,8 @@ html {
 @media (max-width: 768px) {
 
     .shop-page {
-        flex-direction: column;
+        display: flex;
+        align-items: flex-start;
     }
 
     .category-sidebar {
@@ -142,4 +189,14 @@ html {
     .product-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.navbar {
+    position: fixed;
+    z-index: 1000;
+    height: 60px;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    display: flex;
+    align-items: center;
 }
